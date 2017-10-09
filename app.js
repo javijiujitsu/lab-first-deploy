@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express        = require("express");
 const session        = require("express-session");
 const MongoStore     = require("connect-mongo")(session);
@@ -14,8 +15,7 @@ const siteController     = require("./routes/siteController");
 const locationController = require("./routes/locationController");
 
 // Mongoose configuration
-mongoose.connect("mongodb://heroku_bp2mxbpz:vpu031oml2bqtrg403i09cub0u@ds157624.mlab.com:57624/heroku_bp2mxbpz");
-
+mongoose.connect(process.env.MONGODB_URI);
 
 // Middlewares configuration
 app.use(logger("dev"));
